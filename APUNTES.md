@@ -277,3 +277,55 @@ b = Book("Python rocks", "Jose", 200)
 ```
 Por tanto, cuando hacemos `print(b)`o `str(b)`nos va a imprimir esa frase o podemos imprimir la longitud `len(b)`
 - tambien podemos eliminar el objeto `del b`
+
+# EXCEPTIONS
+Para tratar las excepciones el código es el siguiente
+```
+try:
+    # execute the code that could fail
+except TypeError:
+    # do something when it happen, print something 
+except:
+   # all other exceptions
+finally:
+    # this code will allways be executed
+else:
+    # what to execute if there is no error
+```
+Una forma de pedir la entrada hasta que sea conrrecta puede ser lo siguiente:
+```
+while True:
+    try:
+        result = int(input("Please provide a nubmber"))
+    except:
+        print("that is not a number")
+        continue
+    else:
+        print("yes thanks")
+        break
+    finally:
+        print("end of the try exception")
+```
+
+# UNIT TESTS
+Hay muchas formas de hacer los tests, pero dos son `pylint` y `unittest`
+- pylint: libreria que mira a tu codigo y reporta los posibles problemas
+- unittest: librearia que permite testear tus propios programas y comprobar si estás obteniendo la salida deseada
+Para el caso de pylint, solo hay que instalarlo y ejecutar pylint script_name.py y devuelve los errores y mas datos.
+Para unittest el codigo es mas complejo:
+```
+import unittest
+import cap -> la clase que vamos a querer testear
+
+class TestCap(unittest.TestCase):
+    def test_one_word(self):
+        text = "python"
+        result = cap.cap_text(text)
+        self.assertEqual(result, "Python") -> después de ejecutar la funcion, el resultado tiene que ser ese
+    def test_multiple_words(self):
+        text = "monty python"
+        result = cap.cap_text(text)
+        self.assertEqual(result, "Monty Python")
+if __name__ == '__main__':
+    unittest.main()
+```
